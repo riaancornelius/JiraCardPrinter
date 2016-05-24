@@ -36,7 +36,7 @@ You need to grab these from the issue navigator in JIRA.
 
 ### Getting the tickets.csv file 
 
-The simplest ways to get the issues in the issues navigator is to either select them all in the backlog of your board, right clicking and selecting "View in issue navigator".
+The simplest ways to get the issues in the issues navigator is to either select them all in the backlog of your board, right clicking and selecting "View in issue navigator" or to go to the issue navigator and entering a JQL query.
 
 You can then select "Export" -> "Excel (All fields)" to get the issues in an excel file. 
 
