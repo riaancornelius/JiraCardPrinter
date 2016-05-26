@@ -67,9 +67,9 @@ If your filenames are `tickets.csv` and `subtasks.csv`, you can run
 
 This will generate a file called `output.pdf` with all your tickets.
 
-### Command line arguments
+#### Command line arguments
 
-If your files are named something different, or you want to name your output file something different, you can parse in arguments.
+If your files are named something different, or you want to name your output file something different, you can pass in arguments.
 
 ```
  -h         print help
@@ -81,4 +81,3 @@ If your files are named something different, or you want to name your output fil
 For example:
 
 `mvn clean compile package exec:java -Dexec.mainClass=CardPrinter.App -Dexec.args="-t tickets.csv -s subtasks.csv -out test.pdf"`
-
