@@ -29,12 +29,12 @@ If anything is missing or not in exactly the right format, the app will crash or
 
 The app expects 2 input files in the project directory:
 
-* tickets.csv
-* subtasks.csv
+* a CSV file containing tickets
+* a CSV file containing subtasks
 
 You need to grab these from the issue navigator in JIRA.
 
-### Getting the tickets.csv file 
+### Getting the tickets CSV file
 
 The simplest ways to get the issues in the issues navigator is to either select them all in the backlog of your board, right clicking and selecting "View in issue navigator" or to go to the issue navigator and entering a JQL query.
 
@@ -42,9 +42,9 @@ You can then select "Export" -> "Excel (All fields)" to get the issues in an exc
 
 Once you download this file, you need to open it and remove the first 3 rows, the image at the top of the file and the last row. 
 
-Once you've done this, you can save it as a CSV file withe the name tickets.csv in the directory where you checked out this code (The same directory as this README.md).
+Once you've done this, you can save it as a CSV file (the app looks for tickets.csv by default) in the directory where you checked out this code (The same directory as this README.md).
 
-### Getting the sub-tasks.csv file
+### Getting the sub tasks CSV file
 
 On the same issue navigator screen where you got the original data, you should see a JQL query like: 
 
@@ -56,11 +56,28 @@ You need to change this to read:
 
 And then go through exactly the same steps to download and clean the data as for the tickets.csv.
 
-Once you've done this, you can save it as a CSV file with the name sub-tasks.csv in the directory where you checked out this code (The same directory as this README.md).
+Once you've done this, you can save it as a CSV file (the app looks for subtasks.csv by default) in the directory where you checked out this code (The same directory as this README.md).
 
 ### Running the app
 You can now run the app using Maven:
 
+If your filenames are `tickets.csv` and `subtasks.csv`, you can run
+
 `mvn clean compile package exec:java -Dexec.mainClass=CardPrinter.App`
 
-This will generate a file called `test.pdf` with all your tickets.
+This will generate a file called `output.pdf` with all your tickets.
+
+#### Command line arguments
+
+If your files are named something different, or you want to name your output file something different, you can pass in arguments.
+
+```
+ -h         print help
+ -o <arg>   the output file. Default: output.pdf
+ -s <arg>   the subtasks file. Default: subtasks.csv
+ -t <arg>   the tickets file. Default: tickets.csv
+ ```
+
+For example:
+
+`mvn clean compile package exec:java -Dexec.mainClass=CardPrinter.App -Dexec.args="-t tickets.csv -s subtasks.csv -out test.pdf"`

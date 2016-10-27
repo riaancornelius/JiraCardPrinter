@@ -25,10 +25,10 @@ public class PdfTest {
         document = new Document(PageSize.A4);
     }
 
-    public boolean openPdf() {
+    public boolean openPdf(String pdfFileName) {
         boolean status = false;
         try {
-            File pdfFile = new File("test.pdf");
+            File pdfFile = new File(pdfFileName);
             if (pdfFile != null) {
                 PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
                 document.open();
